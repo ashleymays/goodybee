@@ -1,0 +1,20 @@
+<!--Header-->
+<nav class="header__nav center-row">
+    <a class="header__nav__home-link" href="/">Recipe Finder</a>
+    <div class="center-row">
+        <form class="center-row search-bar-form header__search-bar-form" action="/recipes/recipes" method="GET" autocomplete="off">
+            <input type="search" name="q" class="header__search-bar__input" placeholder="Search for something..." />
+            <button class="center-row search-bar__btn">
+                <span class="material-icons-outlined">search</span>
+            </button>
+        </form>
+        <div class="header__nav__nav-links center-row">
+            <% if (isAuthenticated) { %>
+                <a class="header__nav__link" target="_self" href="/user/profile">Profile</a>
+            <% } else { %>
+                <a class="header__nav__link" target="_self" href="/user/login">Login</a>
+                <a class="header__nav__link" target="_self" href="/user/signup">Signup</a>
+            <% } %>
+        </div>
+    </div>
+</nav>

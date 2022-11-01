@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/header.ejs') %>
+    </header>
+    <main>
+        <!--LIST OF POSSIBLE FILTERS TO SORT RESULTS BY-->
+        <aside class="aside">
+            <button type="button" class="aside-close-btn">
+                <span class="material-icons-outlined">close</span>
+            </button>
+            <form id="filters__options">
+                <!--PUT SEARCH QUERY IN FORM SO IT SHOWS IN THE URL WHEN THIS FORM SUBMITS-->
+                <input type="hidden" name="q" value="<%- searchQuery %>">
+
+                <!--HEALTH LABELS-->
+                <div class="dropdown-container">
+                    <div class="aside-item">
+                        <button type="button" class="aside-item__icon">
+                            <span class="material-icons-outlined">add</span>
+                        </button>
+                        <h4 class="aside-item__title">Health Labels</h4>
+                    </div>
+                    <div class="dropdown-list">
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="alcohol-cocktail" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Alcohol-Cocktail</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="alcohol-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Alcohol-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="celery-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Celery-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="crustacean-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Crustacean-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="dairy-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Dairy-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="DASH" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">DASH</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="egg-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Egg-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="fish-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Fish-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="fodmap-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">FODMAP-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="gluten-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Gluten-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="immuno-supportive" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Immuno-Supportive</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="keto-friendly" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Keto-friendly</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="kidney-friendly" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Kidney-friendly</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="kosher" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Kosher</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="low-potassium" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Low-Potassium</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="low-sugar" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Low-Sugar</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="lupine-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Lupine-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="Mediterranean" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Mediterranean</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="mollusk-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Mollusk-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="mustard-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Mustard-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="no-oil-added" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">No oil added</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="paleo" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Paleo</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="peanut-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Peanut-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="pescatarian" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Pescatarian</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="pork-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Pork-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="red-meat-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Red-Meat-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="sesame-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Sesame-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="shellfish-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Shellfish-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="soy-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Soy-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="sugar-conscious" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Sugar-conscious</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="sulfite-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Sulfite-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="tree-nut-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Tree-Nut-free</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="vegan" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Vegan</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="vegetarian" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Vegetarian</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="health" value="wheat-free" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Wheat-free</span></label>
+                    </div>
+                </div>
+
+                <!--DIET LABELS-->
+                <div class="dropdown-container">
+                    <div class="aside-item">
+                        <button type="button" class="aside-item__icon">
+                            <span class="material-icons-outlined">add</span>
+                        </button>
+                        <h4 class="aside-item__title">Diet Labels</h4>
+                    </div>
+                    <div class="dropdown-list">
+                        <label class="filters__dropdown-item"><input type="checkbox" name="diet" value="balanced" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Balanced</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="diet" value="high-fiber" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">High-Fiber</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="diet" value="high-protein" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">High-Protein</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="diet" value="low-carb" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Low-Carb</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="diet" value="low-fat" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Low-Fat</span></label>
+                        <label class="filters__dropdown-item"><input type="checkbox" name="diet" value="low-sodium" /><span class="custom-checkbox"></span><span class="filters__dropdown-item__text">Low-Sodium</span></label>
+                    </div>
+                </div>
+
+                <!--MEAL TYPE-->
+                <div class="dropdown-container">
+                    <div class="aside-item">
+                        <button type="button" class="aside-item__icon">
+                            <span class="material-icons-outlined">add</span>
+                        </button>
+                        <h4 class="aside-item__title">Meal Type</h4>
+                    </div>
+                    <div class="dropdown-list">
+                        <label class="filters__dropdown-item"><input type="radio" name="mealType" class="custom-radio" value="Breakfast" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Breakfast</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="mealType" class="custom-radio" value="Lunch" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Lunch</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="mealType" class="custom-radio" value="Dinner" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Dinner</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="mealType" class="custom-radio" value="Snack" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Snack</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="mealType" class="custom-radio" value="Teatime" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Teatime</span></label>
+                    </div>
+                </div>
+
+                <!--DISH TYPE-->
+                <div class="dropdown-container">
+                    <div class="aside-item">
+                        <button type="button" class="aside-item__icon">
+                            <span class="material-icons-outlined">add</span>
+                        </button>
+                        <h4 class="aside-item__title">Dish Type</h4>
+                    </div>
+                    <div class="dropdown-list">
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="Biscuits and cookies" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Biscuits and Cookies</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="Bread" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Bread</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="Cereals" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Cereals</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="Condiments and sauces" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Condiments and Sauces</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="Desserts" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Desserts</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="Drinks" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Drinks</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="Main course" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Main Course</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="Pancake" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Pancake</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="Preps" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Preps</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="Preserve" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Preserve</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="Salad" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Salad</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="Sandwiches" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Sandwiches</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="Side dish" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Side Dish</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="Soup" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Soup</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="starter" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Starter</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="dishType" class="custom-radio" value="sweets" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Sweets</span></label>
+                    </div>
+                </div>
+
+                <!--CUISINE TYPE-->
+                <div class="dropdown-container">
+                    <div class="aside-item">
+                        <button type="button" class="aside-item__icon">
+                            <span class="material-icons-outlined">add</span>
+                        </button>
+                        <h4 class="aside-item__title">Cuisine Type</h4>
+                    </div>
+                    <div class="dropdown-list">
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="American" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">American</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="Asian" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Asian</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="British" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">British</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="Caribbean" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Caribbean</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="Central Europe" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Central Europe</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="Chinese" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Chinese</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="Eastern Europe" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Eastern Europe</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="French" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">French</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="Greek" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Greek</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="Indian" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Indian</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="Italian" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Italian</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="Japanese" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Japanese</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="Korean" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Korean</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="Kosher" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Kosher</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="Mediterranean" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Mediterranean</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="Mexican" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Mexican</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="Middle Eastern" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Middle Eastern</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="Nordic" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">Nordic</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="South American" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">South American</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="South East Asian" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">South East Asian</span></label>
+                        <label class="filters__dropdown-item"><input type="radio" name="cuisineType" class="custom-radio" value="World" /><span class="custom-radio"></span><span class="filters__dropdown-item__text">World</span></label>
+                    </div>
+                </div>
+            </form>
+            <button class="btn" form="filters__options" id="filters__submit-btn">Apply</button>
+        </aside>
+
+        <!--CONTAINER FOR THE GRID OF RECIPES AND FOOTER-->
+        <section class="recipes-main-content">
+            <div class="recipes-container">
+                <!--SEARCH BAR AND OPEN FILTER BUTTON: ONLY SHOWS IN MOBILE VERSION-->
+                <div class="recipes-container__header">
+                    <form class="center-row search-bar-form recipes-container__search-bar-form" method="GET" autocomplete="off">
+                        <input type="search" name="q" class="recipes-container__search-bar__input" placeholder="Search for something..." />
+                        <button class="center-row search-bar__btn">
+                            <span class="material-icons-outlined">search</span>
+                        </button>
+                    </form>
+                    <button type="button" class="aside-open-btn">
+                        <span class="material-icons-outlined">tune</span>
+                    </button>
+                </div>
+
+                <h3 class="recipes-container__title">
+                    <%- totalRecipes %> results for "<%- searchQuery %>"
+                </h3>
+                
+                <!--DISPLAY RECIPES-->
+                <% if (totalRecipes === 0) { %>
+                    <h4 class="recipes-container__filler">Try adjusting the filters or checking your spelling.</h4>
+                <% } else { %>
+                    <div class="recipes-grid-container">
+                        <% for (let i = 0; i < recipesList.length; ++i) { %>
+                            <!--RECIPE HREF IS THE SUBSTRING BETWEEN THE SUBSTRING 'https://api.edamam.com/api/recipes/v2/' (which has 38 characters) AND THE FIRST QUERY IN THE API-->
+                            <div class="recipe">
+                                <!-- CHECK IF A RECIPE IS BOOKMARKED -->
+                                <% if (bookmarks && bookmarks.find(obj => obj.id === recipesList[i]._links.self.href.substring(38, recipesList[i]._links.self.href.indexOf('?')))) { %>
+                                    <label class="recipe__bookmark"><input type="checkbox" name="bookmark" checked /><span class="material-icons-outlined">bookmark</span></label>
+                                <% } else { %>
+                                    <label class="recipe__bookmark"><input type="checkbox" name="bookmark" /><span class="material-icons-outlined">bookmark_border</span></label>
+                                <% } %>
+                                
+                                <img class="recipe__img" alt="Picture of <%- recipesList[i].recipe.label %>" loading="lazy" src="<%- recipesList[i].recipe.images.REGULAR.url %>" />
+                                <a class="recipe__link" href="/recipes/recipe/<%- recipesList[i]._links.self.href.substring(38, recipesList[i]._links.self.href.indexOf('?')) %>">
+                                    <h3 class="recipe__title"><%- recipesList[i].recipe.label %></h3>
+                                    <h6 class="recipe__subtitle">From <%- recipesList[i].recipe.source %></h6>
+                                </a>
+                            </div>
+                        <% } %>
+                    </div>
+                <% } %>
+            </div>
+
+            <!--LOAD MORE RECIPES-->
+            <% if (totalRecipes > recipesList.length) { %>
+                <button class="btn" type="button" id="load-more-btn">Load More</button>
+                <h5 id="loading-text">Loading...</h5>
+            <% } %>
+
+            <footer>
+                <%- include('../partials/footer.ejs') %>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>

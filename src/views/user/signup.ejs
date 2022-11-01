@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/header.ejs') %>
+    </header>
+    <main class="center-col">
+        <form class="auth-form center-col" action="/user/signup" method="POST">
+            <h1 class="auth-heading">Sign Up</h1>
+            <div class="auth-form__name-container">
+                <div>
+                    <label class="auth-form__label" for="first-name">First Name</label>
+                    <input class="auth-form__input" type="text" name="firstName" id="first-name" required />
+                </div>
+                <div>
+                    <label class="auth-form__label" for="last-name">Last Name</label>
+                    <input class="auth-form__input" type="text" name="lastName" id="last-name" required />
+                </div>
+            </div>
+            <label class="auth-form__label" for="email">Email address</label>
+            <input class="auth-form__input" type="email" name="email" id="email" required />
+            <label class="auth-form__label" for="new-password">Password</label>
+            <input class="auth-form__input" type="password" name="newPass" id="new-password" minlength="8" required />
+            <label class="auth-form__label" for="confirm-password">Confirm Password</label>
+            <input class="auth-form__input" type="password" name="confirmPass" id="confirm-password" minlength="8" required />
+            <button type="submit" class="auth-form__btn btn">Sign Up</button>
+        </form>
+        <div class="auth-link-container center-col">
+            <a class="auth-link" href="/user/login">Back to Login</a>
+        </div>
+        <% if (message) { %>
+            <h5 class="auth-message"><%- message %></h5>
+        <% } %>
+    </main>
+    <footer>
+        <%- include('../partials/footer.ejs') %>
+    </footer>
+</body>
+</html>

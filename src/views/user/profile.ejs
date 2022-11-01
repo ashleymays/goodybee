@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/header.ejs') %>
+    </header>
+    <main class="center-col">
+        <div id="overlay" class="hidden"></div>
+
+        <!-- ASIDE -->
+        <aside class="aside">
+            <div class="profile-info center-col">
+                <!-- BUTTON TO CLOSE ASIDE (FOR MOBILE VERSION) -->
+                <button type="button" class="aside-close-btn">
+                    <span class="material-icons-outlined">close</span>
+                </button>
+
+                <!-- PROFILE PICTURE -->
+                <div class="avatar-container center-col">
+                    <div class="avatar-wrapper">
+                        <img id="avatar" alt="Current profile picture" src="<%- user.profilePictureURL %>" />
+                    </div>
+                    <label class="avatar-input-container center-col">
+                        <input id="avatar__input" type="file" name="file" accept="png, jpeg, jpg" />
+                        <span class="material-icons-outlined">add_a_photo</span>
+                    </label>
+                </div>
+                <h2 class="profile-info__title"><%- user.firstName %> <%- user.lastName %></h2>
+                <h5 class="profile-info__subtitle"><%- user.email %></h5>
+
+                <!-- EDIT PROFILE -->
+                <div class="open-popup-btn aside-item">
+                    <button type="button" class="aside-item__icon">
+                        <span class="material-icons-outlined">edit</span>
+                    </button>
+                    <h4 class="aside-item__title">Edit Profile</h4>
+                </div>
+                <!-- LOGOUT -->
+                <form class="aside-item" action="/user/logout?_method=DELETE" method="POST">
+                    <button type="submit" class="aside-item__icon">
+                        <span class="material-icons-outlined">logout</span>
+                    </button>
+                    <button type="submit" class="aside-btn aside-item__title">Logout</button>
+                </form>
+                <!-- DELETE ACCOUNT -->
+                <div class="open-popup-btn aside-item">
+                    <button type="button" class="aside-item__icon">
+                        <span class="material-icons-outlined">delete</span>
+                    </button>
+                    <h4 class="aside-item__title">Delete Account</h4>
+                </div>
+            </div>
+        </aside>
+
+
+        <!-- FORM TO EDIT PROFILE -->
+        <!-- EDIT PROFILE FORM -->
+        <form id="edit-profile-form" class="popup-form auth-form center-col hidden" action="/user/edit-profile?_method=PUT" method="POST">
+            <!-- CLOSE BUTTON -->
+            <button type="button" class="close-popup-btn">
+                <span class="material-icons-outlined">close</span>
+            </button>
+
+            <h1 class="auth-heading">Edit Profile</h1>
+            <div class="auth-form__name-container">
+                <div>
+                    <label class="auth-form__label" for="first-name">First Name</label>
+                    <input class="auth-form__input" type="text" name="firstName" id="first-name" value="<%- user.firstName %>" />
+                </div>
+                <div>
+                    <label class="auth-form__label" for="last-name">Last Name</label>
+                    <input class="auth-form__input" type="text" name="lastName" id="last-name" value="<%- user.lastName %>" />
+                </div>
+            </div>
+            <label class="auth-form__label" for="email">Email address</label>
+            <input class="auth-form__input" type="email" name="email" id="email" value="<%- user.email %>" />
+            <button type="submit" class="auth-form__btn btn">Confirm</button>
+        </form>
+
+        <!-- FORM TO DELETE ACCOUNT -->
+        <form id="delete-account-form" class="popup-form auth-form center-col hidden" action="/user/profile?_method=DELETE" method="POST">
+            <!-- CLOSE BUTTON -->
+            <button type="button" class="close-popup-btn">
+                <span class="material-icons-outlined">close</span>
+            </button>
+
+            <h1 class="auth-heading">Delete Account</h1>
+            <label class="auth-form__label" for="delete-acct">Type <em>delete</em> to confirm.</label>
+            <input class="auth-form__input" type="text" name="deleteAcct" id="delete-acct-text" required />
+            <button type="submit" class="auth-form__btn btn">Delete Account</button>
+        </form>
+
+
+        <!--CONTAINER FOR THE GRID OF RECIPES AND FOOTER-->
+        <section class="recipes-main-content">
+            <div class="recipes-container">
+                <h3 class="bookmarked-recipe-title">Welcome back, <%- user.firstName %></h3>
+                <!--DISPLAY BOOKMARKED RECIPES-->
+                <div class="center-row bookmarked-recipe-container__header">
+                    <h3 class="recipes-container__title"><%- user.recipes.length %> recipes saved</h3>
+                    
+                    <!--OPEN ASIDE BUTTON: ONLY SHOWS IN MOBILE VERSION-->
+                    <button type="button" class="aside-open-btn">
+                        <span class="material-icons-outlined">manage_accounts</span>
+                    </button>
+                </div>
+
+                <!-- DISPLAY BOOKMARKED RECIPES -->
+                <div class="recipes-grid-container">
+                    <% for (let i = user.recipes.length - 1; i >= 0; --i) { %>
+                        <div class="recipe">
+                            <label class="recipe__bookmark"><input type="checkbox" name="bookmark" checked /><span class="material-icons-outlined">bookmark</span></label>
+                            <img class="recipe__img" alt="Filler image" loading="lazy" src="../../public/images/recipe-filler-image.jpg" />
+                            <a class="recipe__link" href="/recipes/recipe/<%- user.recipes[i].id %>">
+                                <h3 class="recipe__title"><%- user.recipes[i].title %></h3>
+                                <h6 class="recipe__subtitle"><%- user.recipes[i].subtitle %></h6>
+                            </a>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+            <footer>
+                <%- include('../partials/footer.ejs') %>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>

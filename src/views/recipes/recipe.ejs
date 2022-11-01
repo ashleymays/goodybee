@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/header.ejs') %>
+    </header>
+    <main>
+        <!--DESKTOP VERSION OF THE MAIN CONTENT-->
+        <section class="selected-recipe-desktop-ver center-col">
+
+            <!--HEADER-->
+            <section class="selected-recipe-header">
+                <h5 class="selected-recipe__subtitle">From <a class="selected-recipe__source" target="_blank" href="<%- selectedRecipe.recipe.url %>"><%- selectedRecipe.recipe.source %></a></h5>
+                <h1 class="selected-recipe__title"><%- selectedRecipe.recipe.label %></h1>
+
+
+                <!--QUICK FACTS: CUISINE TYPE, MEAL TYPE, AND DISH TYPE-->
+                <div class="selected-recipe__facts-container">
+
+                    <!--CUISINE TYPE-->
+                    <div class="selected-recipe__fact center-col">
+                        <div class="selected-recipe__fact__logo">
+                            <img class="selected-recipe__fact__img" loading="lazy" src="/public/images/globe.png" />
+                        </div>
+                        <h3 class="selected-recipe__fact__title"><%- selectedRecipe.recipe.cuisineType[0] %></h3>
+                        <h5 class="selected-recipe__fact__subtitle">Cuisine Type</h5>
+                    </div>
+
+                    <!--MEAL TYPE-->
+                    <div class="selected-recipe__fact center-col">
+                        <div class="selected-recipe__fact__logo">
+                            <img class="selected-recipe__fact__img" loading="lazy" src="/public/images/lunch.png" />
+                        </div>
+                        <h3 class="selected-recipe__fact__title"><%- selectedRecipe.recipe.mealType[0] %></h3>
+                        <h5 class="selected-recipe__fact__subtitle">Meal Type</h5>
+                    </div>
+
+                    <!--DISH TYPE-->
+                    <div class="selected-recipe__fact center-col">
+                        <div class="selected-recipe__fact__logo">
+                            <img class="selected-recipe__fact__img" loading="lazy" src="/public/images/meal.png" />
+                        </div>
+                        <h3 class="selected-recipe__fact__title"><%- selectedRecipe.recipe.dishType[0] %></h3>
+                        <h5 class="selected-recipe__fact__subtitle">Dish Type</h5>
+                    </div>
+                </div>
+            </section>
+            
+            <!--LABELS: INGREDIENTS, HEALTH LABELS, AND DIET LABELS-->
+            <section class="labels-container center-col">
+
+                <!--INGREDIENTS-->
+                <div class="label">
+                    <h2 class="label__title">Ingredients</h2>
+                    <div class="label-grid_1">
+                        <% for (let i = 0; i < selectedRecipe.recipe.ingredients.length; ++i) { %>
+                            <div class="center-row ingredient">
+                                <img class="ingredient__img" loading="lazy" src="<%- selectedRecipe.recipe.ingredients[i].image %>" />
+                                <h5 class="label__grid-item"><%- selectedRecipe.recipe.ingredientLines[i] %></h5>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+
+                <!--HEALTH LABELS-->
+                <div class="label">
+                    <h2 class="label__title">Health Labels</h2>
+                    <div class="label-grid_2">
+                        <% for (let i = 0; i < selectedRecipe.recipe.healthLabels.length; ++i) { %>
+                            <h5 class="label__grid-item"><%- selectedRecipe.recipe.healthLabels[i] %></h5>
+                        <% } %>
+                        </div>
+                </div>
+
+                <!--DIET LABELS-->
+                <div class="label">
+                    <h2 class="label__title">Diet Labels</h2>
+                    <div class="label-grid_3">
+                        <% if (selectedRecipe.recipe.dietLabels.length === 0) { %>
+                            <h5 class="label__grid-item">None</h5>
+                        <% } %>
+                        <% if (selectedRecipe.recipe.dietLabels.length !== 0)  { for (let i = 0; i < selectedRecipe.recipe.dietLabels.length; ++i) { %>
+                            <h5 class="label__grid-item"><%- selectedRecipe.recipe.dietLabels[i] %></h5>
+                        <% } } %>
+                    </div>
+                </div>
+
+                <!--ICON ATTRIBUTIONS-->
+                <div class="attribution-container center-col">
+                    <a class="attribution" href="https://www.flaticon.com/free-icons/globe" title="globe icons">Globe icons created by Freepik - Flaticon</a>
+                    <a class="attribution" href="https://www.flaticon.com/free-icons/dish" title="dish icons">Dish icons created by Those Icons - Flaticon</a>
+                    <a class="attribution" href="https://www.flaticon.com/free-icons/lunch" title="lunch icons">Lunch icons created by Freepik - Flaticon</a>
+                </div>
+            </section>
+        </section>
+
+        <!--MOBILE VERSION OF ALL CONTENT-->
+        <section class="selected-recipe-mobile-ver">
+
+            <!--HEADER-->
+            <section class="selected-recipe-header">
+                <img class="selected-recipe__img" alt="Picture of <%- selectedRecipe.recipe.label %>" loading="lazy" src="<%- selectedRecipe.recipe.images.REGULAR.url %>" />
+                <h1 class="selected-recipe__title"><%- selectedRecipe.recipe.label %></h1>
+                <h5 class="selected-recipe__subtitle">From <a class="selected-recipe__source" target="_blank" href="<%- selectedRecipe.recipe.url %>"><%- selectedRecipe.recipe.source %></a></h5>
+
+                <!--QUICK FACTS: CUISINE TYPE, MEAL TYPE, AND DISH TYPE-->
+                <div class="selected-recipe__facts-container">
+
+                    <!--CUISINE TYPE-->
+                    <div class="selected-recipe__fact center-col">
+                        <div class="selected-recipe__fact__logo">
+                            <img class="selected-recipe__fact__img" loading="lazy" src="/public/images/globe.png" />
+                        </div>
+                        <h3 class="selected-recipe__fact__title"><%- selectedRecipe.recipe.cuisineType[0] %></h3>
+                        <h5 class="selected-recipe__fact__subtitle">Cuisine Type</h5>
+                    </div>
+
+                    <!--MEAL TYPE-->
+                    <div class="selected-recipe__fact center-col">
+                        <div class="selected-recipe__fact__logo">
+                            <img class="selected-recipe__fact__img" loading="lazy" src="/public/images/lunch.png" />
+                        </div>
+                        <h3 class="selected-recipe__fact__title"><%- selectedRecipe.recipe.mealType[0] %></h3>
+                        <h5 class="selected-recipe__fact__subtitle">Meal Type</h5>
+                    </div>
+
+                    <!--DISH TYPE-->
+                    <div class="selected-recipe__fact center-col">
+                        <div class="selected-recipe__fact__logo">
+                            <img class="selected-recipe__fact__img" loading="lazy" src="/public/images/meal.png" />
+                        </div>
+                        <h3 class="selected-recipe__fact__title"><%- selectedRecipe.recipe.dishType[0] %></h3>
+                        <h5 class="selected-recipe__fact__subtitle">Dish Type</h5>
+                    </div>
+                </div>
+            </section>
+
+
+            <!--INGREDIENTS-->
+            <div class="dropdown-container">
+                <div class="aside-item">
+                    <button type="button" class="aside-item__icon">
+                        <span class="material-icons-outlined">add</span>
+                    </button>
+                    <h2 class="aside-item__title">Ingredients</h2>
+                </div>
+                <ul class="dropdown-list">
+                    <% for (let i = 0; i < selectedRecipe.recipe.ingredientLines.length; ++i) { %>
+                        <li class="label__dropdown-item"><%- selectedRecipe.recipe.ingredientLines[i] %></li>
+                    <% } %>
+                </ul>
+            </div>
+
+            <!--HEALTH LABELS-->
+            <div class="dropdown-container">
+                <div class="aside-item">
+                    <button type="button" class="aside-item__icon">
+                        <span class="material-icons-outlined">add</span>
+                    </button>
+                    <h2 class="aside-item__title">Health Labels</h2>
+                </div>
+                <ul class="dropdown-list">
+                    <% for (let i = 0; i < selectedRecipe.recipe.healthLabels.length; ++i) { %>
+                        <li class="label__dropdown-item"><%- selectedRecipe.recipe.healthLabels[i] %></li>
+                    <% } %>
+                </ul>
+            </div>
+
+            <!--DIET LABELS-->
+            <div class="dropdown-container">
+                <div class="aside-item">
+                    <button type="button" class="aside-item__icon">
+                        <span class="material-icons-outlined">add</span>
+                    </button>
+                    <h2 class="aside-item__title">Diet Labels</h2>
+                </div>
+                <ul class="dropdown-list">
+                    <% if (selectedRecipe.recipe.dietLabels.length === 0) { %>
+                        <li class="label__dropdown-item">None</li>
+                    <% } %>
+                    <% if (selectedRecipe.recipe.dietLabels.length !== 0)  { for (let i = 0; i < selectedRecipe.recipe.dietLabels.length; ++i) { %>
+                        <li class="label__dropdown-item"><%- selectedRecipe.recipe.dietLabels[i] %></li>
+                    <% } } %>
+                </ul>
+            </div>
+
+            <!--ICON ATTRIBUTIONS-->
+            <div class="attribution-container center-col">
+                <a class="attribution" href="https://www.flaticon.com/free-icons/globe" title="globe icons">Globe icons created by Freepik - Flaticon</a>
+                <a class="attribution" href="https://www.flaticon.com/free-icons/dish" title="dish icons">Dish icons created by Those Icons - Flaticon</a>
+                <a class="attribution" href="https://www.flaticon.com/free-icons/lunch" title="lunch icons">Lunch icons created by Freepik - Flaticon</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <%- include('../partials/footer.ejs') %>
+    </footer>
+</body>
+</html>

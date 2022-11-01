@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+<body>
+    <header>
+        <nav class="header__nav center-row">
+            <a class="header__nav__home-link" href="/">Recipe Finder</a>
+            <div class="center-row header__nav__nav-links center-row">
+                <% if (isAuthenticated) { %>
+                    <a class="header__nav__link" target="_self" href="/user/profile">Profile</a>
+                <% } else { %>
+                    <a class="header__nav__link" target="_self" href="/user/login">Login</a>
+                    <a class="header__nav__link" target="_self" href="/user/signup">Signup</a>
+                <% } %>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Title and search bar -->
+    <main class="home-container">
+        <img class="home__background-img" src="/public/images/background.png" />
+        <div class="home__text-container">
+            <h1 class="home-title">Find something delicious.</h1>
+            <form class="center-row search-bar-form home__search-bar-form" action="/recipes/recipes" method="GET" autocomplete="off">
+                <input type="search" name="q" class="home__search-bar__input" placeholder="chicken, salad, lasagna,..." />
+                <button class="center-row search-bar__btn">
+                    <span class="material-icons-outlined">search</span>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer.ejs') %>
+    </footer>
+</body>
+</html>
