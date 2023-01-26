@@ -1,2 +1,4 @@
 /node_modules
+
+// Database and API configuration file
 src/configs/credentials.config.js
