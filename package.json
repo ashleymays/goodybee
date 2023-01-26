@@ -1,7 +1,7 @@
 {
-  "name": "recipe-app",
+  "name": "goodybee",
   "version": "2.0.0",
-  "description": "A simple recipe web app where people can find and save recipes.",
+  "description": "A place where people can find and save recipes.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
